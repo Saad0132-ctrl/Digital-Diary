@@ -47,7 +47,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
       <Navbar studentName="Saad" notificationCount={0} notifications={[]} />
 
       <div className="flex">
@@ -56,8 +56,8 @@ export default function SettingsPage() {
         <main className="flex-1 p-6">
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
             <div className="mb-8">
-              <h1 className="text-3xl font-bold text-gray-800 mb-2">Settings</h1>
-              <p className="text-gray-600">Manage your account and preferences</p>
+              <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2">Settings</h1>
+              <p className="text-gray-600 dark:text-gray-400">Manage your account and preferences</p>
             </div>
 
             <div className="max-w-2xl space-y-6">
@@ -71,29 +71,29 @@ export default function SettingsPage() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div>
-                      <label className="text-sm font-medium text-gray-700">Full Name</label>
+                      <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Full Name</label>
                       <input
                         type="text"
                         value={settings.fullName}
                         onChange={(e) => handleSettingChange("fullName", e.target.value)}
-                        className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-gray-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        className="mt-1 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 px-4 py-2 text-gray-800 dark:text-gray-100 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                       />
                     </div>
                     <div>
-                      <label className="text-sm font-medium text-gray-700">Email Address</label>
+                      <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Email Address</label>
                       <input
                         type="email"
                         value={settings.email}
                         onChange={(e) => handleSettingChange("email", e.target.value)}
-                        className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-gray-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        className="mt-1 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 px-4 py-2 text-gray-800 dark:text-gray-100 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                       />
                     </div>
                     <div>
-                      <label className="text-sm font-medium text-gray-700">Grade</label>
+                      <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Grade</label>
                       <select
                         value={settings.grade}
                         onChange={(e) => handleSettingChange("grade", e.target.value)}
-                        className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-gray-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        className="mt-1 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 px-4 py-2 text-gray-800 dark:text-gray-100 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                       >
                         {Array.from({ length: 12 }, (_, i) => i + 1).map((grade) => (
                           <option key={grade} value={grade.toString()}>
@@ -124,19 +124,19 @@ export default function SettingsPage() {
                           type="checkbox"
                           checked={enabled}
                           onChange={() => handleNotificationChange(key)}
-                          className="h-4 w-4 rounded border-gray-300 text-indigo-600"
+                          className="h-4 w-4 rounded border-gray-300 dark:border-gray-600 text-indigo-600 bg-white dark:bg-gray-700"
                         />
-                        <span className="text-sm text-gray-700 capitalize">
+                        <span className="text-sm text-gray-700 dark:text-gray-300 capitalize">
                           {key.replace(/([A-Z])/g, " $1")}
                         </span>
                       </label>
                     ))}
                     <div className="pt-2">
-                      <label className="text-sm font-medium text-gray-700">Email Digest</label>
+                      <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Email Digest</label>
                       <select
                         value={settings.emailDigest}
                         onChange={(e) => handleSettingChange("emailDigest", e.target.value)}
-                        className="mt-1 w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-gray-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        className="mt-1 w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 px-4 py-2 text-gray-800 dark:text-gray-100 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                       >
                         <option value="daily">Daily</option>
                         <option value="weekly">Weekly</option>
@@ -158,16 +158,16 @@ export default function SettingsPage() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div>
-                      <label className="text-sm font-medium text-gray-700">Password</label>
+                      <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
                       <div className="mt-1 relative">
                         <input
                           type={showPassword ? "text" : "password"}
                           placeholder="••••••••"
-                          className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-gray-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                          className="w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-700 px-4 py-2 text-gray-800 dark:text-gray-100 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                         />
                         <button
                           onClick={() => setShowPassword(!showPassword)}
-                          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400"
                         >
                           {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                         </button>

@@ -68,7 +68,7 @@ export function Sidebar({ activeTab }: SidebarProps) {
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.3 }}
         className={cn(
-          "sticky top-16 h-[calc(100vh-4rem)] border-r border-gray-200 bg-white transition-all duration-300 z-50",
+          "sticky top-16 h-[calc(100vh-4rem)] border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 transition-all duration-300 z-50",
           "hidden lg:block",
           isCollapsed ? "w-20" : "w-64",
           // Mobile styles
@@ -89,8 +89,8 @@ export function Sidebar({ activeTab }: SidebarProps) {
                   className={cn(
                     "flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm transition-all cursor-pointer",
                     isActive
-                      ? "bg-indigo-50 text-indigo-600 font-semibold"
-                      : "text-gray-600 hover:bg-gray-50"
+                      ? "bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 font-semibold"
+                      : "text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
                   )}
                 >
                   <Icon className="h-5 w-5 shrink-0" />
@@ -114,7 +114,7 @@ export function Sidebar({ activeTab }: SidebarProps) {
 
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="hidden lg:flex items-center justify-center rounded-xl border-2 border-gray-200 bg-white p-2 hover:bg-gray-50 transition-colors"
+          className="hidden lg:flex items-center justify-center rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-2 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
           aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
           {isCollapsed ? (

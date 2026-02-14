@@ -30,6 +30,16 @@ export function PerformanceCharts({
   attendanceData,
 }: PerformanceChartsProps) {
   const [activeChart, setActiveChart] = useState<"line" | "bar" | "area">("line");
+  // Simple theme detection (in a real app, use the hook)
+  const isDark = typeof window !== 'undefined' && document.documentElement.classList.contains('dark');
+  const axisColor = isDark ? "#9ca3af" : "#6b7280";
+  const gridColor = isDark ? "#374151" : "#e5e7eb";
+  const tooltipStyle = {
+    backgroundColor: isDark ? "#1f2937" : "white",
+    borderColor: isDark ? "#374151" : "#e5e7eb",
+    color: isDark ? "#f3f4f6" : "#1f2937",
+    borderRadius: "12px"
+  };
 
   return (
     <motion.div
@@ -47,11 +57,10 @@ export function PerformanceCharts({
                 <button
                   key={chart}
                   onClick={() => setActiveChart(chart as any)}
-                  className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
-                    activeChart === chart
-                      ? "bg-indigo-100 text-indigo-600"
-                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                  }`}
+                  className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${activeChart === chart
+                      ? "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400"
+                      : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"
+                    }`}
                 >
                   {chart.charAt(0).toUpperCase() + chart.slice(1)}
                 </button>
@@ -64,10 +73,10 @@ export function PerformanceCharts({
             {activeChart === "line" && (
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={performanceData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                  <XAxis dataKey="month" stroke="#6b7280" />
-                  <YAxis stroke="#6b7280" />
-                  <Tooltip contentStyle={{ backgroundColor: "white", border: "1px solid #e5e7eb", borderRadius: "12px" }} />
+                  <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />
+                  <XAxis dataKey="month" stroke={axisColor} />
+                  <YAxis stroke={axisColor} />
+                  <Tooltip contentStyle={tooltipStyle} />
                   <Legend />
                   <Line type="monotone" dataKey="math" stroke="#4F46E5" strokeWidth={2} />
                   <Line type="monotone" dataKey="science" stroke="#3B82F6" strokeWidth={2} />
@@ -78,10 +87,10 @@ export function PerformanceCharts({
             {activeChart === "bar" && (
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={subjectScores}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                  <XAxis dataKey="subject" stroke="#6b7280" />
-                  <YAxis stroke="#6b7280" />
-                  <Tooltip contentStyle={{ backgroundColor: "white", border: "1px solid #e5e7eb", borderRadius: "12px" }} />
+                  <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />
+                  <XAxis dataKey="subject" stroke={axisColor} />
+                  <YAxis stroke={axisColor} />
+                  <Tooltip contentStyle={tooltipStyle} />
                   <Bar dataKey="score" fill="#4F46E5" radius={[8, 8, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
@@ -95,10 +104,10 @@ export function PerformanceCharts({
                       <stop offset="95%" stopColor="#4F46E5" stopOpacity={0} />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                  <XAxis dataKey="week" stroke="#6b7280" />
-                  <YAxis stroke="#6b7280" />
-                  <Tooltip contentStyle={{ backgroundColor: "white", border: "1px solid #e5e7eb", borderRadius: "12px" }} />
+                  <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />
+                  <XAxis dataKey="week" stroke={axisColor} />
+                  <YAxis stroke={axisColor} />
+                  <Tooltip contentStyle={tooltipStyle} />
                   <Area type="monotone" dataKey="percentage" stroke="#4F46E5" fillOpacity={1} fill="url(#colorAttendance)" />
                 </AreaChart>
               </ResponsiveContainer>

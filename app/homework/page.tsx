@@ -143,7 +143,7 @@ export default function HomeworkPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
       <Navbar studentName="Saad" notificationCount={notifications.filter((n) => !n.read).length} notifications={notifications} />
 
       <div className="flex">
@@ -152,8 +152,8 @@ export default function HomeworkPage() {
         <main className="flex-1 p-6">
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
             <div className="mb-8">
-              <h1 className="text-3xl font-bold text-gray-800 mb-2">Homework & Tasks</h1>
-              <p className="text-gray-600">
+              <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2">Homework & Tasks</h1>
+              <p className="text-gray-600 dark:text-gray-400">
                 {monthStats.completed} of {monthStats.total} tasks completed for {monthNames[selectedMonth]} {selectedYear}
               </p>
             </div>
@@ -165,16 +165,16 @@ export default function HomeworkPage() {
                   <div className="flex items-center gap-3">
                     <button
                       onClick={goToPreviousMonth}
-                      className="p-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors"
+                      className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                       aria-label="Previous month"
                     >
-                      <ChevronLeft className="h-5 w-5 text-gray-600" />
+                      <ChevronLeft className="h-5 w-5 text-gray-600 dark:text-gray-300" />
                     </button>
                     <div className="flex items-center gap-3">
                       <select
                         value={selectedMonth}
                         onChange={(e) => setSelectedMonth(Number(e.target.value))}
-                        className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm font-medium bg-white"
+                        className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm font-medium bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                       >
                         {monthNames.map((month, index) => (
                           <option key={month} value={index}>
@@ -185,7 +185,7 @@ export default function HomeworkPage() {
                       <select
                         value={selectedYear}
                         onChange={(e) => setSelectedYear(Number(e.target.value))}
-                        className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm font-medium bg-white"
+                        className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm font-medium bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                       >
                         {availableMonths.years.map((year) => (
                           <option key={year} value={year}>
@@ -196,10 +196,10 @@ export default function HomeworkPage() {
                     </div>
                     <button
                       onClick={goToNextMonth}
-                      className="p-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors"
+                      className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                       aria-label="Next month"
                     >
-                      <ChevronRight className="h-5 w-5 text-gray-600" />
+                      <ChevronRight className="h-5 w-5 text-gray-600 dark:text-gray-300" />
                     </button>
                   </div>
                   <button
@@ -217,32 +217,32 @@ export default function HomeworkPage() {
               <Card>
                 <CardContent className="pt-6">
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-indigo-600">{monthStats.completed}</div>
-                    <p className="text-gray-600 text-sm mt-2">Completed</p>
+                    <div className="text-4xl font-bold text-indigo-600 dark:text-indigo-400">{monthStats.completed}</div>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm mt-2">Completed</p>
                   </div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="pt-6">
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-amber-600">{monthStats.highPriority}</div>
-                    <p className="text-gray-600 text-sm mt-2">High Priority</p>
+                    <div className="text-4xl font-bold text-amber-600 dark:text-amber-400">{monthStats.highPriority}</div>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm mt-2">High Priority</p>
                   </div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="pt-6">
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-red-600">{monthStats.overdue}</div>
-                    <p className="text-gray-600 text-sm mt-2">Overdue</p>
+                    <div className="text-4xl font-bold text-red-600 dark:text-red-400">{monthStats.overdue}</div>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm mt-2">Overdue</p>
                   </div>
                 </CardContent>
               </Card>
               <Card>
                 <CardContent className="pt-6">
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-blue-600">{monthStats.pending}</div>
-                    <p className="text-gray-600 text-sm mt-2">Pending</p>
+                    <div className="text-4xl font-bold text-blue-600 dark:text-blue-400">{monthStats.pending}</div>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm mt-2">Pending</p>
                   </div>
                 </CardContent>
               </Card>
@@ -252,7 +252,7 @@ export default function HomeworkPage() {
               <CardHeader>
                 <div>
                   <CardTitle>All Tasks</CardTitle>
-                  <p className="text-sm text-gray-600 mt-1">
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                     Showing {filteredTasks.length} of {monthStats.total} tasks for {monthNames[selectedMonth]} {selectedYear}
                   </p>
                 </div>
@@ -262,28 +262,28 @@ export default function HomeworkPage() {
                 <div className="mb-6 space-y-4">
                   {/* Search Input */}
                   <div className="relative">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 dark:text-gray-500" />
                     <input
                       type="text"
                       placeholder="Search by title, subject, description, or date..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+                      className="w-full pl-10 pr-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
                     />
                   </div>
 
                   {/* Filter Row */}
                   <div className="flex flex-wrap items-center gap-3">
                     <div className="flex items-center gap-2">
-                      <Filter className="h-4 w-4 text-gray-500" />
-                      <span className="text-sm font-medium text-gray-700">Filters:</span>
+                      <Filter className="h-4 w-4 text-gray-500 dark:text-gray-400" />
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Filters:</span>
                     </div>
 
                     {/* Status Filter */}
                     <select
                       value={statusFilter}
                       onChange={(e) => setStatusFilter(e.target.value)}
-                      className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm bg-white"
+                      className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                     >
                       <option value="all">All Status</option>
                       <option value="pending">Pending</option>
@@ -294,7 +294,7 @@ export default function HomeworkPage() {
                     <select
                       value={subjectFilter}
                       onChange={(e) => setSubjectFilter(e.target.value)}
-                      className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm bg-white"
+                      className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                     >
                       <option value="all">All Subjects</option>
                       {uniqueSubjects.map((subject) => (
@@ -308,7 +308,7 @@ export default function HomeworkPage() {
                     <select
                       value={priorityFilter}
                       onChange={(e) => setPriorityFilter(e.target.value)}
-                      className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm bg-white"
+                      className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                     >
                       <option value="all">All Priorities</option>
                       <option value="high">High</option>
@@ -320,7 +320,7 @@ export default function HomeworkPage() {
                     {hasActiveFilters && (
                       <button
                         onClick={clearFilters}
-                        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
                       >
                         <X className="h-4 w-4" />
                         Clear Filters
@@ -330,39 +330,39 @@ export default function HomeworkPage() {
                 </div>
 
                 {/* Table Container with Fixed Height */}
-                <div className="border border-gray-200 rounded-xl overflow-hidden">
+                <div className="border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
                   <div className="overflow-x-auto" style={{ maxHeight: "600px", overflowY: "auto" }}>
-                    <table className="min-w-full divide-y divide-gray-200">
-                      <thead className="bg-gray-50 sticky top-0 z-10">
+                    <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                      <thead className="bg-gray-50 dark:bg-gray-800 sticky top-0 z-10">
                         <tr>
-                          <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider w-12">
+                          <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider w-12">
                             Status
                           </th>
-                          <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                          <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                             Title
                           </th>
-                          <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                          <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                             Subject
                           </th>
-                          <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                          <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                             Due Date
                           </th>
-                          <th scope="col" className="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                          <th scope="col" className="px-6 py-4 text-center text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                             Priority
                           </th>
-                          <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                          <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                             Description
                           </th>
                         </tr>
                       </thead>
-                      <tbody className="bg-white divide-y divide-gray-200">
+                      <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                         {filteredTasks.length > 0 ? (
                           filteredTasks.map((task) => {
                             const daysUntil = getDaysUntil(task.dueDate);
                             const isOverdue = daysUntil < 0 && task.status === "pending";
 
                             return (
-                              <tr key={task.id} className="hover:bg-gray-50 transition-colors">
+                              <tr key={task.id} className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                                 <td className="px-6 py-4 whitespace-nowrap">
                                   <button
                                     onClick={() => handleToggleTask(task.id)}
@@ -379,24 +379,24 @@ export default function HomeworkPage() {
                                 <td className="px-6 py-4">
                                   <div
                                     className={cn(
-                                      "text-sm font-medium",
-                                      task.status === "completed" && "line-through text-gray-500",
-                                      isOverdue && "text-red-600"
+                                      "text-sm font-medium text-gray-900 dark:text-gray-100",
+                                      task.status === "completed" && "line-through text-gray-500 dark:text-gray-500",
+                                      isOverdue && "text-red-600 dark:text-red-400"
                                     )}
                                   >
                                     {task.title}
                                   </div>
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
                                   {task.subject}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                  <div className="text-sm text-gray-700">{formatDate(task.dueDate)}</div>
+                                  <div className="text-sm text-gray-700 dark:text-gray-300">{formatDate(task.dueDate)}</div>
                                   {isOverdue && (
-                                    <div className="text-xs text-red-600 font-semibold mt-1">Overdue</div>
+                                    <div className="text-xs text-red-600 dark:text-red-400 font-semibold mt-1">Overdue</div>
                                   )}
                                   {!isOverdue && daysUntil >= 0 && daysUntil <= 3 && (
-                                    <div className="text-xs text-amber-600 font-semibold mt-1">
+                                    <div className="text-xs text-amber-600 dark:text-amber-400 font-semibold mt-1">
                                       {daysUntil === 0 ? "Due Today" : `${daysUntil} days left`}
                                     </div>
                                   )}
@@ -412,7 +412,7 @@ export default function HomeworkPage() {
                                   </span>
                                 </td>
                                 <td className="px-6 py-4">
-                                  <div className="text-sm text-gray-600 max-w-xs truncate">
+                                  <div className="text-sm text-gray-600 dark:text-gray-400 max-w-xs truncate">
                                     {task.description || "No description"}
                                   </div>
                                 </td>
@@ -421,7 +421,7 @@ export default function HomeworkPage() {
                           })
                         ) : (
                           <tr>
-                            <td colSpan={6} className="px-6 py-12 text-center text-gray-500">
+                            <td colSpan={6} className="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
                               <div className="flex flex-col items-center gap-2">
                                 <p className="text-base font-medium">No tasks found</p>
                                 <p className="text-sm">Try adjusting your search or filters</p>

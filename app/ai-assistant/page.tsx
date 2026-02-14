@@ -46,7 +46,7 @@ export default function AiAssistantPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
       <Navbar studentName="Saad" notificationCount={notifications.filter((n) => !n.read).length} notifications={notifications} />
 
       <div className="flex">
@@ -55,8 +55,8 @@ export default function AiAssistantPage() {
         <main className="flex-1 p-6">
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
             <div className="mb-8">
-              <h1 className="text-3xl font-bold text-gray-800 mb-2">AI Study Assistant</h1>
-              <p className="text-gray-600">Personalized learning recommendations powered by AI</p>
+              <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2">AI Study Assistant</h1>
+              <p className="text-gray-600 dark:text-gray-400">Personalized learning recommendations powered by AI</p>
             </div>
 
             <motion.div
@@ -64,15 +64,15 @@ export default function AiAssistantPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <Card className="mb-6 border-2 border-indigo-200 bg-gradient-to-br from-indigo-50 to-blue-50">
+              <Card className="mb-6 border-2 border-indigo-200 dark:border-indigo-800 bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-900/40 dark:to-blue-900/40">
                 <CardHeader>
                   <div className="flex items-center gap-3">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-600">
                       <Sparkles className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <CardTitle className="text-indigo-900">AI Analysis Summary</CardTitle>
-                      <p className="text-sm text-indigo-700 mt-1">
+                      <CardTitle className="text-indigo-900 dark:text-indigo-100">AI Analysis Summary</CardTitle>
+                      <p className="text-sm text-indigo-700 dark:text-indigo-300 mt-1">
                         Based on your performance, here are personalized recommendations
                       </p>
                     </div>
@@ -80,21 +80,21 @@ export default function AiAssistantPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="rounded-lg bg-white/80 p-4 text-center">
+                    <div className="rounded-lg bg-white/80 dark:bg-black/20 p-4 text-center">
                       <div className="text-2xl font-bold text-indigo-600">
                         {weakConcepts.filter((c) => c.score < 60).length}
                       </div>
-                      <p className="text-sm text-gray-600 mt-1">Topics Need Improvement</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">Topics Need Improvement</p>
                     </div>
-                    <div className="rounded-lg bg-white/80 p-4 text-center">
+                    <div className="rounded-lg bg-white/80 dark:bg-black/20 p-4 text-center">
                       <div className="text-2xl font-bold text-blue-600">
                         {aiSuggestions.length}
                       </div>
-                      <p className="text-sm text-gray-600 mt-1">Active Recommendations</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">Active Recommendations</p>
                     </div>
-                    <div className="rounded-lg bg-white/80 p-4 text-center">
-                      <div className="text-2xl font-bold text-green-600">78%</div>
-                      <p className="text-sm text-gray-600 mt-1">Learning Progress</p>
+                    <div className="rounded-lg bg-white/80 dark:bg-black/20 p-4 text-center">
+                      <div className="text-2xl font-bold text-green-600 dark:text-green-400">78%</div>
+                      <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">Learning Progress</p>
                     </div>
                   </div>
                 </CardContent>
@@ -102,7 +102,7 @@ export default function AiAssistantPage() {
             </motion.div>
 
             <div className="mb-6">
-              <h2 className="text-xl font-bold text-gray-800 mb-4">Topic Strength Assessment</h2>
+              <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">Topic Strength Assessment</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {weakConcepts.map((concept, index) => (
                   <motion.div
@@ -145,7 +145,7 @@ export default function AiAssistantPage() {
                               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-100 text-indigo-600">
                                 {getTypeIcon(suggestion.type)}
                               </div>
-                              <h3 className="font-semibold text-gray-800">{suggestion.title}</h3>
+                              <h3 className="font-semibold text-gray-800 dark:text-gray-100">{suggestion.title}</h3>
                               <span
                                 className={cn(
                                   "ml-auto rounded-full px-3 py-1 text-xs font-semibold",
@@ -155,21 +155,21 @@ export default function AiAssistantPage() {
                                 {suggestion.difficulty}
                               </span>
                             </div>
-                            <p className="text-sm text-gray-600">{suggestion.description}</p>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">{suggestion.description}</p>
 
                             {expandedSuggestion === suggestion.id && (
                               <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: "auto" }}
                                 exit={{ opacity: 0, height: 0 }}
-                                className="mt-4 border-t border-gray-200 pt-4"
+                                className="mt-4 border-t border-gray-200 dark:border-gray-700 pt-4"
                               >
                                 <div className="space-y-3">
                                   <div>
-                                    <p className="text-sm font-semibold text-gray-800 mb-2">
+                                    <p className="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-2">
                                       Learning Objectives
                                     </p>
-                                    <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                                    <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1 list-disc list-inside">
                                       <li>Understand fundamental concepts</li>
                                       <li>Practice with real-world examples</li>
                                       <li>Master advanced techniques</li>

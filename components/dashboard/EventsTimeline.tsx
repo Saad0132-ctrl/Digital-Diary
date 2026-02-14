@@ -30,7 +30,7 @@ export function EventsTimeline({ events }: EventsTimelineProps) {
       case "quiz":
         return "bg-blue-100 text-blue-600 border-blue-200";
       default:
-        return "bg-gray-100 text-gray-600 border-gray-200";
+        return "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-600";
     }
   };
 
@@ -46,7 +46,7 @@ export function EventsTimeline({ events }: EventsTimelineProps) {
         </CardHeader>
         <CardContent>
           <div className="relative space-y-4">
-            <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gray-200" />
+            <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700" />
             {events.map((event, index) => (
               <motion.div
                 key={event.id}
@@ -58,10 +58,10 @@ export function EventsTimeline({ events }: EventsTimelineProps) {
                 <div className={cn("z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2", getEventColor(event.type))}>
                   {getEventIcon(event.type)}
                 </div>
-                <div className="flex-1 rounded-xl border border-gray-200 bg-white p-4 hover:shadow-md">
-                  <h4 className="font-semibold text-gray-800">{event.title}</h4>
-                  {event.subject && <p className="text-sm text-gray-600 mt-1">{event.subject}</p>}
-                  <div className="mt-2 flex items-center gap-2 text-sm text-gray-500">
+                <div className="flex-1 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 hover:shadow-md">
+                  <h4 className="font-semibold text-gray-800 dark:text-gray-100">{event.title}</h4>
+                  {event.subject && <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">{event.subject}</p>}
+                  <div className="mt-2 flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                     <Calendar className="h-4 w-4" />
                     <span>{formatDate(event.date)}</span>
                     <span className="text-gray-400">•</span>

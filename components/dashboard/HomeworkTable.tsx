@@ -54,65 +54,65 @@ export function HomeworkTable({ tasks, onToggleTask }: HomeworkTableProps) {
           <div className="space-y-2">
             {filteredTasks.length > 0 ? (
               filteredTasks.map((task, index) => {
-              const daysUntil = getDaysUntil(task.dueDate);
-              const isOverdue = daysUntil < 0 && task.status === "pending";
+                const daysUntil = getDaysUntil(task.dueDate);
+                const isOverdue = daysUntil < 0 && task.status === "pending";
 
-              return (
-                <motion.div
-                  key={task.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                  className={cn(
-                    "flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-4 hover:shadow-md transition-all",
-                    task.status === "completed" && "opacity-60",
-                    isOverdue && "border-red-300 bg-red-50"
-                  )}
-                >
-                  <button
-                    onClick={() => onToggleTask(task.id)}
-                    className="text-gray-400 hover:text-indigo-600 transition"
+                return (
+                  <motion.div
+                    key={task.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    className={cn(
+                      "flex items-center gap-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 hover:shadow-md transition-all",
+                      task.status === "completed" && "opacity-60",
+                      isOverdue && "border-red-300 bg-red-50"
+                    )}
                   >
-                    <CheckCircle2
-                      className={cn(
-                        "h-6 w-6",
-                        task.status === "completed" && "fill-indigo-600 text-indigo-600"
-                      )}
-                    />
-                  </button>
+                    <button
+                      onClick={() => onToggleTask(task.id)}
+                      className="text-gray-400 dark:text-gray-500 hover:text-indigo-600 transition"
+                    >
+                      <CheckCircle2
+                        className={cn(
+                          "h-6 w-6",
+                          task.status === "completed" && "fill-indigo-600 text-indigo-600"
+                        )}
+                      />
+                    </button>
 
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3">
-                      <h4
-                        className={cn(
-                          "font-semibold text-gray-800",
-                          task.status === "completed" && "line-through text-gray-500"
-                        )}
-                      >
-                        {task.title}
-                      </h4>
-                      <span
-                        className={cn(
-                          "rounded-lg border px-2 py-1 text-xs font-medium",
-                          priorityColors[task.priority]
-                        )}
-                      >
-                        {task.priority}
-                      </span>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3">
+                        <h4
+                          className={cn(
+                            "font-semibold text-gray-800 dark:text-gray-100",
+                            task.status === "completed" && "line-through text-gray-500 dark:text-gray-400"
+                          )}
+                        >
+                          {task.title}
+                        </h4>
+                        <span
+                          className={cn(
+                            "rounded-lg border px-2 py-1 text-xs font-medium",
+                            priorityColors[task.priority]
+                          )}
+                        >
+                          {task.priority}
+                        </span>
+                      </div>
+                      <div className="mt-1 flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+                        <span className="font-medium">{task.subject}</span>
+                        <span className="text-gray-400">•</span>
+                        <span className={isOverdue ? "text-red-600 font-semibold" : ""}>
+                          {isOverdue ? "Overdue" : formatDate(task.dueDate)}
+                        </span>
+                      </div>
                     </div>
-                    <div className="mt-1 flex items-center gap-4 text-sm text-gray-600">
-                      <span className="font-medium">{task.subject}</span>
-                      <span className="text-gray-400">•</span>
-                      <span className={isOverdue ? "text-red-600 font-semibold" : ""}>
-                        {isOverdue ? "Overdue" : formatDate(task.dueDate)}
-                      </span>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })
+                  </motion.div>
+                );
+              })
             ) : (
-              <div className="text-center py-8 text-gray-500">
+              <div className="text-center py-8 text-gray-500 dark:text-gray-400">
                 <p className="text-sm">No upcoming tasks</p>
               </div>
             )}

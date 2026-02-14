@@ -24,21 +24,21 @@ export function ConceptHeatmap({ concepts, suggestions }: ConceptHeatmapProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.6 }}
     >
-      <Card className="border-2 border-indigo-200 bg-gradient-to-br from-indigo-50 to-blue-50">
+      <Card className="border-2 border-indigo-200 dark:border-indigo-900 bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-gray-800 dark:to-gray-900">
         <CardHeader>
           <div className="flex items-center gap-2">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600">
               <Sparkles className="h-5 w-5 text-white" />
             </div>
             <div>
-              <CardTitle className="text-indigo-900">AI Weak Concept Detection</CardTitle>
-              <CardDescription className="text-indigo-700">Powered by machine learning</CardDescription>
+              <CardTitle className="text-indigo-900 dark:text-indigo-100">AI Weak Concept Detection</CardTitle>
+              <CardDescription className="text-indigo-700 dark:text-indigo-300">Powered by machine learning</CardDescription>
             </div>
           </div>
         </CardHeader>
         <CardContent className="space-y-6">
           <div>
-            <h4 className="mb-4 text-sm font-semibold text-gray-700">Subject Performance Analysis</h4>
+            <h4 className="mb-4 text-sm font-semibold text-gray-700 dark:text-gray-200">Subject Performance Analysis</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {concepts.map((concept, index) => (
                 <motion.div
@@ -55,11 +55,11 @@ export function ConceptHeatmap({ concepts, suggestions }: ConceptHeatmapProps) {
                   <div className="text-4xl font-bold mb-2">{concept.score}%</div>
                   <div className="text-lg font-semibold mt-2">{concept.topic}</div>
                   <div className="mt-3 text-xs opacity-90">
-                    {concept.score >= 80 
-                      ? "Strong Performance" 
-                      : concept.score >= 60 
-                      ? "Needs Improvement" 
-                      : "Requires Attention"}
+                    {concept.score >= 80
+                      ? "Strong Performance"
+                      : concept.score >= 60
+                        ? "Needs Improvement"
+                        : "Requires Attention"}
                   </div>
                 </motion.div>
               ))}
@@ -67,7 +67,7 @@ export function ConceptHeatmap({ concepts, suggestions }: ConceptHeatmapProps) {
           </div>
 
           <div>
-            <h4 className="mb-3 text-sm font-semibold text-gray-700">AI Recommendations</h4>
+            <h4 className="mb-3 text-sm font-semibold text-gray-700 dark:text-gray-200">AI Recommendations</h4>
             <div className="space-y-2">
               {suggestions.map((suggestion, index) => (
                 <motion.div
@@ -75,11 +75,11 @@ export function ConceptHeatmap({ concepts, suggestions }: ConceptHeatmapProps) {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
-                  className="flex items-center justify-between rounded-xl bg-white p-4 shadow-sm hover:shadow-md"
+                  className="flex items-center justify-between rounded-xl bg-white dark:bg-gray-800 p-4 shadow-sm hover:shadow-md"
                 >
                   <div>
-                    <p className="font-semibold text-gray-800">{suggestion.title}</p>
-                    <p className="text-sm text-gray-600">{suggestion.description}</p>
+                    <p className="font-semibold text-gray-800 dark:text-gray-100">{suggestion.title}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">{suggestion.description}</p>
                   </div>
                   <Button size="sm">Start</Button>
                 </motion.div>

@@ -30,15 +30,15 @@ export function NotificationsPanel({ notifications }: NotificationsPanelProps) {
   const getNotificationColor = (type: string) => {
     switch (type) {
       case "alert":
-        return "bg-blue-100 text-blue-600";
+        return "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300";
       case "message":
-        return "bg-indigo-100 text-indigo-600";
+        return "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300";
       case "warning":
-        return "bg-amber-100 text-amber-600";
+        return "bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-300";
       case "success":
-        return "bg-green-100 text-green-600";
+        return "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-300";
       default:
-        return "bg-gray-100 text-gray-600";
+        return "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300";
     }
   };
 
@@ -61,8 +61,8 @@ export function NotificationsPanel({ notifications }: NotificationsPanelProps) {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.8 + index * 0.05 }}
                 className={cn(
-                  "flex gap-3 rounded-xl border p-4 hover:shadow-md cursor-pointer",
-                  notification.read ? "border-gray-200 bg-white opacity-70" : "border-indigo-200 bg-indigo-50"
+                  "flex gap-3 rounded-xl border p-4 hover:shadow-md cursor-pointer transition-colors",
+                  notification.read ? "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 opacity-70" : "border-indigo-200 dark:border-indigo-800 bg-indigo-50 dark:bg-indigo-900/20"
                 )}
               >
                 <div className={cn("flex h-10 w-10 shrink-0 items-center justify-center rounded-lg", getNotificationColor(notification.type))}>
@@ -70,11 +70,11 @@ export function NotificationsPanel({ notifications }: NotificationsPanelProps) {
                 </div>
                 <div className="flex-1">
                   <div className="flex items-start justify-between">
-                    <h4 className="font-semibold text-gray-800">{notification.title}</h4>
-                    {!notification.read && <span className="ml-2 h-2 w-2 shrink-0 rounded-full bg-indigo-600" />}
+                    <h4 className="font-semibold text-gray-800 dark:text-gray-100">{notification.title}</h4>
+                    {!notification.read && <span className="ml-2 h-2 w-2 shrink-0 rounded-full bg-indigo-600 dark:bg-indigo-400" />}
                   </div>
-                  <p className="mt-1 text-sm text-gray-600">{notification.message}</p>
-                  <p className="mt-2 text-xs text-gray-500">{getRelativeTime(notification.timestamp)}</p>
+                  <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">{notification.message}</p>
+                  <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">{getRelativeTime(notification.timestamp)}</p>
                 </div>
               </motion.div>
             ))}

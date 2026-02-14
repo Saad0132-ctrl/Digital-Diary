@@ -49,7 +49,7 @@ export function StudentHeader({ studentName, todayTasks, upcomingExams }: Studen
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: 0.3 }}
-            className="flex items-center gap-2 rounded-xl bg-white/20 backdrop-blur px-4 py-3"
+            className="flex items-center gap-2 rounded-xl bg-white/20 dark:bg-black/20 backdrop-blur px-4 py-3"
           >
             <div>
               <p className="text-2xl font-bold">{todayTasks}</p>
@@ -61,7 +61,7 @@ export function StudentHeader({ studentName, todayTasks, upcomingExams }: Studen
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: 0.4 }}
-            className="flex items-center gap-2 rounded-xl bg-white/20 backdrop-blur px-4 py-3"
+            className="flex items-center gap-2 rounded-xl bg-white/20 dark:bg-black/20 backdrop-blur px-4 py-3"
           >
             <div>
               <p className="text-2xl font-bold">{upcomingExams}</p>

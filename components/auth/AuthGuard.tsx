@@ -40,8 +40,8 @@ export function AuthGuard({ children }: { children: React.ReactNode }) {
   // Show nothing while checking authentication
   if (isAuthenticated === null) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 dark:border-indigo-400"></div>
       </div>
     );
   }
@@ -59,4 +59,5 @@ export function AuthGuard({ children }: { children: React.ReactNode }) {
   // Otherwise, show nothing (redirecting)
   return null;
 }
+
 
