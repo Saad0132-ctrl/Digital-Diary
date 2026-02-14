@@ -57,7 +57,7 @@ export default function LoginPage() {
             </motion.div>
             <div>
               <CardTitle className="text-3xl font-bold text-gray-800 dark:text-gray-100">Welcome Back</CardTitle>
-              <CardDescription className="text-base mt-2 dark:text-gray-400">
+              <CardDescription className="text-base mt-2 text-gray-600 dark:text-gray-400">
                 Sign in to your Student Diary account
               </CardDescription>
             </div>
@@ -146,11 +146,11 @@ export default function LoginPage() {
               </Button>
             </form>
 
-            <div className="mt-6 text-center">
+            {/* <div className="mt-6 text-center">
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 Demo credentials: Use any email and password to login
               </p>
-            </div>
+            </div> */}
           </CardContent>
         </Card>
 
